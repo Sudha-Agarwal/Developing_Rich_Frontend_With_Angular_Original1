@@ -1,0 +1,18 @@
+<!--<p id="para">Hello World</p>
+
+{{title}}
+<app-bindings></app-bindings>
+
+<app-products-list></app-products-list>
+-->
+<a routerLink="/bindings" id="s1" [routerLinkActive]="['active-link']">Bindings&nbsp;&nbsp;</a>
+<a [routerLink]="'/courses'" [routerLinkActive]="['active-link']">Courses&nbsp;</a>
+<a routerLink="/products" [routerLinkActive]="['active-link']">Products&nbsp;</a>
+<a routerLink="/login-form" [routerLinkActive]="['active-link']">Login&nbsp;</a>
+<a routerLink="/model-form" [routerLinkActive]="['active-link']">Model Form&nbsp;</a>
+
+
+
+
+
+<router-outlet></router-outlet>
