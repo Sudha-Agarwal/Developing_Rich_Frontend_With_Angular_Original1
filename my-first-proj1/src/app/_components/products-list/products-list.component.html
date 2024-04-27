@@ -1,6 +1,7 @@
 <h2>Product List</h2>
-
+<button class="btn btn-primary" (click)="addNewProduct()">Add new product</button>
 <div *ngIf = 'products.length > 0; then showTableBlock; else noDataBlock'></div>
+
 <ng-template #showTableBlock>
 <table>
     <thead>
@@ -8,6 +9,7 @@
             <th>ID</th>
             <th>Name</th>
             <th>Description</th>
+            <th>Category</th>
             <th>Available</th>
             <th>Actions</th>
         </tr>
@@ -18,6 +20,7 @@
             <td>{{product.id}}</td>
             <td>{{product.name}}</td>
             <td>{{product.description}}</td>
+            <td>{{product.category}}</td>
             <td [ngClass] = "{'in-stock': isProductInStock(product), 'out-of-stock':!isProductInStock(product)}">
                 {{isProductInStock(product) ? 'Avaialble': 'Not Available'}}
             </td>
@@ -26,12 +29,53 @@
                 <a [routerLink]="['/product-detail']" [queryParams]="{ id: product.id }">
                     View(Query Params)
                 </a>
-            <button (click)="deleteProduct(product.id)">Delete</button>
+                <button class="btn btn-primary" (click)="showDetails(product)">Edit1</button>
+                <button class="btn btn-primary" (click)="deleteProduct(product.id)">Delete</button>
+
             </td>
 
         </tr>
     </tbody>
 </table>
+
+    
+<!-- Edit Product Modal -->
+<div class="modal" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <!-- Include app-edit-product component here -->
+        <app-edit-product [product]="selectedProduct" (productChange)="update($event)" (cancelUpdate)="cancelUpdate()"></app-edit-product>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Product Modal -->
+<div  class="modal" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h5 class="modal-title" id="addProductModalLabel">Add Product</h5>
+          <button type="button" class="btn-close" (click)="cancelAdd()" aria-label="Close"></button>
+        </div>
+  
+        <!-- Modal Body -->
+        <div class="modal-body">
+          <!-- Include app-add-product component here -->
+          <app-add-product (productAdded)="added($event)" (cancelAdd)="cancelAdd()"></app-add-product>
+        </div>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #noDataBlock>

@@ -7,7 +7,10 @@ import { BindingsComponent } from './_components/bindings/bindings.component';
 import { ProductsListComponent } from './_components/products-list/products-list.component';
 import { ProductDetailComponent } from './_components/product-detail/product-detail.component';
 import { LoginFormComponent } from './_components/login-form/login-form.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { AddProductComponent } from './_components/add-product/add-product.component';
+import { EditProductComponent } from './_components/edit-product/edit-product.component';
 
 
 @NgModule({
@@ -17,12 +20,16 @@ import { FormsModule } from '@angular/forms';
     ProductsListComponent,
     ProductDetailComponent,
     LoginFormComponent,
+    AddProductComponent,
+    EditProductComponent,
    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

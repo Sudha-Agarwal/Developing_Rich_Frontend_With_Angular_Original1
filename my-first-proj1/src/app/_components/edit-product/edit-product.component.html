@@ -1,0 +1,7 @@
+<p>Category : {{product.category}}</p>
+<p>Name        : <input [(ngModel)]="product.name"></p>
+<p>Description     : <input [(ngModel)]="product.description"></p>
+
+ 
+<button (click)="update()">Update</button>
+<button (click)="onCancelUpdate()">Cancel</button>
