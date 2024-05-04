@@ -1,0 +1,28 @@
+<div>
+    <h2>To-Do List</h2>
+    <button (click)="getFreshData()">Get Fresh Data</button>
+    <div *ngIf="!isOnline" class="offline-message">Network is offline. Unable to fetch updated data.</div>
+    
+    <ul>
+        <!-- Loop through the to-do items and display them -->
+        <li *ngFor="let todo of todoList">
+          <input
+            type="checkbox"
+            [checked]="todo.completed"
+            (change)="toggleTodoStatus(todo)"
+          />
+          <span [class.completed]="todo.completed">{{ todo.description }}</span>
+          <button (click)="deleteTodo(todo)">Delete</button>
+        </li>
+      </ul>
+
+      <div>
+        <input
+          type="text"
+          placeholder="Add a new to-do"
+          [(ngModel)]="newTodoText"
+        />
+        <button (click)="addTodo()">Add</button>
+      </div>
+  </div>
+  
