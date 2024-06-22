@@ -10,7 +10,7 @@ describe('FormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormComponent ],
+      declarations: [FormComponent],
       imports: [FormsModule]
     })
     .compileComponents();
@@ -25,13 +25,14 @@ describe('FormComponent', () => {
   });
 
   it('should create a form with a username input and a submit button', () => {
-    const formElement: HTMLFormElement = fixture.nativeElement;
+    const formElement: HTMLFormElement = fixture.nativeElement.querySelector('form');
     const usernameInput = formElement.querySelector('input[name="username"]');
     const submitButton = formElement.querySelector('button[type="submit"]');
   
     expect(usernameInput).toBeTruthy();
     expect(submitButton).toBeTruthy();
   });
+
 
   it('should call onSubmit method when form is submitted', () => {
     spyOn(component, 'onSubmit');

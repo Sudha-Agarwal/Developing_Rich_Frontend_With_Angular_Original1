@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AddProductComponent } from './_components/add-product/add-product.component';
 import { EditProductComponent } from './_components/edit-product/edit-product.component';
+import { PipesComponent } from './_components/pipes/pipes.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { EditProductComponent } from './_components/edit-product/edit-product.co
     LoginFormComponent,
     AddProductComponent,
     EditProductComponent,
+    PipesComponent,
    
   ],
   imports: [
