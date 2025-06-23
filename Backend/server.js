@@ -111,12 +111,19 @@ app.put('/products', (req, res) => {
   }
 
   // Update the product with data from the request body
-  if (req.body.name) {
+  /*if (req.body.name) {
     productToUpdate.name = req.body.name;
   }
   if (req.body.description) {
     productToUpdate.description = req.body.description;
-  }
+  }*/
+
+  // Dynamically update only the fields present in req.body
+  Object.keys(req.body).forEach((key) => {
+    if (key !== "id" && productToUpdate.hasOwnProperty(key)) {
+      productToUpdate[key] = req.body[key];
+    }
+  });
   
 
   return res.json({ message: 'Product updated successfully', product: productToUpdate });
